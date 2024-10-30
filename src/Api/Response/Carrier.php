@@ -1,0 +1,24 @@
+<?php
+declare(strict_types=1);
+
+namespace Sylapi\EurocommerceLinkerV2\Api\Response;
+
+use stdClass;
+use Sylapi\EurocommerceLinkerV2\Entities\Carrier as CarrierEntity;
+
+class Carrier
+{
+    private $result;
+
+    function __construct(stdClass $result)
+    {
+        $this->result = $result;
+    }
+
+    public function get(): CarrierEntity
+    {
+        $carrier = new CarrierEntity;
+        $carrier->setName($this->result->name);
+        return $carrier;
+    }
+}
