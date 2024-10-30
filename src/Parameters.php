@@ -11,6 +11,8 @@ use Sylapi\EurocommerceLinkerV2\Traits\Validatable;
 /**
  * @method string getApiUrl()
  * @method string setApiUrl(string $value)
+ * @method string getCompanyId()
+ * @method string setCompanyId(string $value)
  * @method string getLogin()
  * @method string setLogin(string $value)
  * @method string getPassword()
@@ -34,7 +36,8 @@ class Parameters extends ArrayObject implements Validation
             (array) $this,
             [
                 'login' => 'required',
-                'password' => 'required'
+                'password' => 'required',
+                'companyId' => 'required',
             ]
         );
 

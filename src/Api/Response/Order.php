@@ -26,8 +26,6 @@ class Order
     {
 
         $order = new OrderEntity;
-
-            
         return $order;
     }
 }

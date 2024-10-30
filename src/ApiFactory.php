@@ -19,11 +19,7 @@ class ApiFactory
                     ->session($parameters);
 
         return new Api(
-            new Api\Products($session),
-            new Api\ProductSets($session),
-            new Api\ProductStocks($session),
             new Api\Orders($session),
-            new Api\OrderAttachments($session),
             new Api\Carriers($session),
             new Entities\Make()
         );

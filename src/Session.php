@@ -67,7 +67,7 @@ class Session
             'headers'  => $this->headers()
         ]);
 
-        $this->login($this->client);
+        $this->login();
     }
 
     private function login(): self
