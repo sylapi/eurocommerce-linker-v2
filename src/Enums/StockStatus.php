@@ -6,7 +6,7 @@ namespace Sylapi\EurocommerceLinkerV2\Enums;
 enum StockStatus: int
 {   
     case COMMERCIAL = 0;
-    case RETURN = 1;
+    case RETURN_STATUS = 1;
     case QUALITY_CONTROL = 2;
     case BLOCKADE_AFTER_QUALITY_CHECK = 3;
     case BLOCK = 4;

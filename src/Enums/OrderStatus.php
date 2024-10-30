@@ -17,6 +17,6 @@ enum OrderStatus: int
     case CANCELED = 9;
     case ERROR = 10;
     case SETTLED = 11;
-    case RETURN = 12;
+    case RETURN_STATUS = 12;
     case IMPORT_START_STATUS = 13;
 }
