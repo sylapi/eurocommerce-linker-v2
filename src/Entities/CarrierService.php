@@ -38,7 +38,7 @@ class CarrierService extends Entity
         return $this->id;
     }
 
-    public function setId(string $id): CarrierService
+    public function setId(string $id): self
     {
         $this->id = $id;
         return $this;
@@ -49,7 +49,7 @@ class CarrierService extends Entity
         return $this->name;
     }
 
-    public function setName(string $name): Carrier
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
