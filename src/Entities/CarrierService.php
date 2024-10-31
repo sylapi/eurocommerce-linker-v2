@@ -6,7 +6,7 @@ namespace Sylapi\EurocommerceLinkerV2\Entities;
 use Sylapi\EurocommerceLinkerV2\Abstracts\Entity;
 use Sylapi\EurocommerceLinkerV2\Traits\Validatable;
 
-class Carrier extends Entity
+class CarrierService extends Entity
 {
     use Validatable;
 
@@ -38,7 +38,7 @@ class Carrier extends Entity
         return $this->id;
     }
 
-    public function setId(string $id): Carrier
+    public function setId(string $id): CarrierService
     {
         $this->id = $id;
         return $this;

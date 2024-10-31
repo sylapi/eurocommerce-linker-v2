@@ -10,39 +10,26 @@ class Address extends Entity
 {
     use Validatable;
 
-    private ?string $name1;
-    private ?string $name2;
-    private ?string $name3;
-    private ?string $country;
-    private ?string $buildingNumber;
-    private ?string $city;
-    private ?string $postCode;
-    private ?string $street;
-    private ?string $houseNumber;
-    private ?string $email;
-    private ?string $phoneNumber;
-    private ?string $address;
-    private ?string $contact;
-    private ?string $countryCode;
+    private ?string $name1 = null;
+    private ?string $name2 = null;
+    private ?string $name3 = null;
+    private ?string $country = null;
+    private ?string $buildingNumber = null;
+    private ?string $city = null;
+    private ?string $postCode = null;
+    private ?string $street = null;
+    private ?string $houseNumber = null;
+    private ?string $email = null;
+    private ?string $phoneNumber = null;
+    private ?string $address = null;
+    private ?string $contact = null;
+    private ?string $countryCode = null;
 
 
     public function validate(): bool
     {
         $rules = [
-            'name1' => ['nullable', 'string', 'max:100'],
-            'name2' => ['nullable', 'string', 'max:100'],
-            'name3' => ['nullable', 'string', 'max:100'],
-            'country' => ['nullable', 'string', 'max:100'],
-            'buildingNumber' => ['nullable', 'string', 'max:100'],
-            'city' => ['nullable', 'string', 'max:100'],
-            'postCode' => ['nullable', 'string', 'max:100'],
-            'street' => ['nullable', 'string', 'max:100'],
-            'houseNumber' => ['nullable', 'string', 'max:100'],
-            'email' => ['nullable', 'string', 'max:100'],
-            'phoneNumber' => ['nullable', 'string', 'max:100'],
-            'address' => ['nullable', 'string', 'max:100'],
-            'contact' => ['nullable', 'string', 'max:100'],
-            'countryCode' => ['nullable', 'string', 'max:100'],
+
         ];
 
         $data = $this->toArray();

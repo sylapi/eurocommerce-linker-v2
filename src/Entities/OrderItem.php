@@ -10,26 +10,19 @@ class OrderItem extends Entity
 {
     use Validatable;
 
-    private ?string $id;
-    private ?string $orderId;
-    private ?string $productId;
-    private int $quantity;
-    private ?int $realQuantity;
-    private int $unit;
-    private int $status;
+    private ?string $id = null;
+    private ?string $orderId = null;
+    private ?string $productId = null;
+    private int $quantity = 0;
+    private ?int $realQuantity = null;
+    private int $unit = 0;
+    private ?int $status;
     private ?string $refId;
 
     public function validate(): bool
     {
         $rules = [
-            'id' => ['nullable', 'string', 'max:100'],
-            'orderId' => ['nullable', 'string', 'max:100'],
-            'productId' => ['nullable', 'string', 'max:100'],
-            'quantity' => ['required', 'integer'],
-            'realQuantity' => ['nullable', 'integer'],
-            'unit' => ['required', 'integer'],
-            'status' => ['required', 'integer'],
-            'refId' => ['nullable', 'string', 'max:100'],
+
         ];
 
         $data = $this->toArray();
@@ -40,7 +33,14 @@ class OrderItem extends Entity
     public function toArray(): array
     {
         return [
-            
+            'id' => $this->getId(),
+            'orderId' => $this->getOrderId(),
+            'productId' => $this->getProductId(),
+            'quantity' => $this->getQuantity(),
+            'realQuantity' => $this->getRealQuantity(),
+            'unit' => $this->getUnit(),
+            'status' => $this->getStatus(),
+            'refId' => $this->getRefId(),
         ];
     }
 

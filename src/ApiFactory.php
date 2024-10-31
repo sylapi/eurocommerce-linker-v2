@@ -21,6 +21,7 @@ class ApiFactory
         return new Api(
             new Api\Orders($session),
             new Api\Carriers($session),
+            new Api\CarrierServices($session),
             new Entities\Make()
         );
     }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace Sylapi\EurocommerceLinkerV2\Api\Response;
 
 use stdClass;
-use Sylapi\EurocommerceLinkerV2\Entities\Carrier as CarrierEntity;
+use Sylapi\EurocommerceLinkerV2\Entities\CarrierService as CarrierServiceEntity;
 
-class Carrier
+class CarrierService
 {
     private $result;
 
@@ -15,9 +15,9 @@ class Carrier
         $this->result = $result;
     }
 
-    public function get(): CarrierEntity
+    public function get(): CarrierServiceEntity
     {
-        $carrier = new CarrierEntity;
+        $carrier = new CarrierServiceEntity;
         $carrier->setId($this->result->id);
         $carrier->setName($this->result->name);
         return $carrier;

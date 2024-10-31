@@ -35,7 +35,7 @@ class Carriers
             if ($result === null && json_last_error() !== JSON_ERROR_NONE) {
                 throw new Exception('Json data is incorrect');
             }
-
+            
             return (new Response\Carriers((array) $result))->get();
         } catch (ClientException $e) {
             throw new TransportException(ResponseError::message($e));

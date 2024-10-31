@@ -7,10 +7,10 @@ use Sylapi\EurocommerceLinkerV2\Entities\Make;
 
 class Api
 {
-
     public function __construct(
         private Api\Orders $orders,
         private Api\Carriers $carriers,
+        private Api\CarrierServices $carrierServices,
         private Entities\Make $make
     ) {
 
@@ -26,9 +26,13 @@ class Api
         return $this->orders;
     }
     
-    
     public function carriers(): Api\Carriers
     {
         return $this->carriers;
+    }
+
+    public function CarrierServices(): Api\CarrierServices
+    {
+        return $this->carrierServices;
     }
 }

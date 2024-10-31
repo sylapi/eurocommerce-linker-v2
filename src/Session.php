@@ -67,6 +67,8 @@ class Session
             'headers'  => $this->headers()
         ]);
 
+        // var_dump($this->headers());
+
         $this->login();
     }
 

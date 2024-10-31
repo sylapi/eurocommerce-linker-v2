@@ -5,55 +5,40 @@ namespace Sylapi\EurocommerceLinkerV2\Api;
 
 use Exception;
 use GuzzleHttp\Exception\ClientException;
-use Sylapi\EurocommerceLinkerV2\Entities\Order;
 use Sylapi\EurocommerceLinkerV2\Helpers\ResponseError;
-use Sylapi\EurocommerceLinkerV2\Exceptions\ValidateException;
 use Sylapi\EurocommerceLinkerV2\Exceptions\TransportException;
-use Sylapi\EurocommerceLinkerV2\Entities;
 
-class Orders
+class CarrierServices
 {
     private $session;
-
-    const API_PATH = '/api/Orders';
 
     public function __construct($session)
     {
         $this->session = $session;
     }
 
-    public function create(Order $order): Entities\Order
+    public function all()
     {
-        if(!$order->validate()) {
-            throw $order->getErrors()->createValidateException();
-        }
-        
         try {
             $client = $this->session->client();
-            $requestOrder = (new Request\Order($order))->create();
 
-            $stream = $client->post(
-                self::API_PATH.'/create',
+            $stream = $client->get(
+                '/api/CarrierServices/get-all',
                 [
-                    'debug' => $this->session->parameters()->getDebug(),
-                    'headers' => $this->session->headers(),
-                    'json' => $requestOrder
+                    'debug' => $this->session->parameters()->getDebug()
                 ]
             );
-
             $result = json_decode($stream->getBody()->getContents());
 
             if ($result === null && json_last_error() !== JSON_ERROR_NONE) {
                 throw new Exception('Json data is incorrect');
             }
-
-            var_dump($result);
-
-            return (new Response\Order($result->result))->get();
+            return (new Response\CarrierServices((array) $result))->get();
         } catch (ClientException $e) {
             throw new TransportException(ResponseError::message($e));
         } catch (Exception $e) {
             throw new TransportException($e->getMessage(), $e->getCode());
-        }
-    }
+        }   
+    }    
+
 }
