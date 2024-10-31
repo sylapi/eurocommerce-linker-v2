@@ -10,8 +10,8 @@ class SessionFactory
 {
     private $sessions = [];
     private $parameters;
-
-    const API_LIVE = 'https://linker-test.gamp.pl/';
+    
+    const API_LIVE = 'https://linker2.eurocommerce.pl/';
 
     public function session(Parameters $parameters): Session
     {

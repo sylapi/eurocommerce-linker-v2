@@ -67,8 +67,6 @@ class Session
             'headers'  => $this->headers()
         ]);
 
-        // var_dump($this->headers());
-
         $this->login();
     }
 
@@ -78,7 +76,7 @@ class Session
             'base_uri' => $this->parameters->getApiUrl(),
             'headers'  => $this->headers()
         ]);
-
+        
         $response = $client->post('/api/Authenticate/login', [
             'json' => [
                 'username' => $this->parameters()->getLogin(),
@@ -88,7 +86,6 @@ class Session
 
         $content = json_decode($response->getBody()->getContents());
         $this->setToken($content?->result?->accessToken);
-
         return $this;
     }
 

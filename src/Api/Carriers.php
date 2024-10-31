@@ -5,9 +5,7 @@ namespace Sylapi\EurocommerceLinkerV2\Api;
 
 use Exception;
 use GuzzleHttp\Exception\ClientException;
-use Sylapi\EurocommerceLinkerV2\Entities\Order;
 use Sylapi\EurocommerceLinkerV2\Helpers\ResponseError;
-use Sylapi\EurocommerceLinkerV2\Exceptions\ValidateException;
 use Sylapi\EurocommerceLinkerV2\Exceptions\TransportException;
 
 class Carriers
@@ -35,7 +33,7 @@ class Carriers
             if ($result === null && json_last_error() !== JSON_ERROR_NONE) {
                 throw new Exception('Json data is incorrect');
             }
-            
+
             return (new Response\Carriers((array) $result))->get();
         } catch (ClientException $e) {
             throw new TransportException(ResponseError::message($e));
