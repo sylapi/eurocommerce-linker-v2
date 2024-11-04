@@ -18,9 +18,9 @@ class Order
 
     public function get(): OrderEntity
     {
-
         $order = new OrderEntity;
         $order->setId($this->result->orderId);
+        $order->setStatus($this->result->status);
         return $order;
     }
 }

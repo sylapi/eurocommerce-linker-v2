@@ -20,6 +20,40 @@ class Orders
     {
         $this->session = $session;
     }
+    
+    public function get(string $orderId): Entities\Order
+    {
+        try {
+            $client = $this->session->client();
+
+            $stream = $client->post(
+                self::API_PATH.'/get-order-by-id',
+                [
+                    'debug' => $this->session->parameters()->getDebug(),
+                    'headers' => $this->session->headers(),
+                    'json' => [
+                        'id' => $orderId,
+                        'isDetails' => false
+                    ]
+                ]
+            );
+
+            $result = json_decode($stream->getBody()->getContents());
+
+            if ($result === null && json_last_error() !== JSON_ERROR_NONE) {
+                throw new Exception('Json data is incorrect');
+            }
+
+            return (new Response\Order($result->result))->get();
+        } catch (ClientException $e) {
+            throw new TransportException(ResponseError::message($e));
+        } catch (Exception $e) {
+            throw new TransportException($e->getMessage(), $e->getCode());
+        }
+
+    }
+
+
 
     public function create(Order $order): Entities\Order
     {
