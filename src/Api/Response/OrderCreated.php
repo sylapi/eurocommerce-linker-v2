@@ -7,7 +7,7 @@ use stdClass;
 
 use Sylapi\EurocommerceLinkerV2\Entities\Order as OrderEntity;
 
-class Order
+class OrderCreated
 {
     private $result;
 
@@ -19,10 +19,7 @@ class Order
     public function get(): OrderEntity
     {
         $order = new OrderEntity;
-        $order->setId($this->result->id);
-        if($status = $this->result->status ?? null) {
-            $order->setStatus($status);
-        }
+        $order->setId($this->result->orderId);
         return $order;
     }
 }

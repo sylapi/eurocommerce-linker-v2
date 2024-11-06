@@ -43,7 +43,7 @@ class Orders
             if ($result === null && json_last_error() !== JSON_ERROR_NONE) {
                 throw new Exception('Json data is incorrect');
             }
-
+            
             return (new Response\Order($result->result))->get();
         } catch (ClientException $e) {
             throw new TransportException(ResponseError::message($e));
@@ -80,7 +80,7 @@ class Orders
                 throw new Exception('Json data is incorrect');
             }
 
-            return (new Response\Order($result->result))->get();
+            return (new Response\OrderCreated($result->result))->get();
         } catch (ClientException $e) {
             throw new TransportException(ResponseError::message($e));
         } catch (Exception $e) {
