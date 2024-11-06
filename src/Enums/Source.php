@@ -3,19 +3,19 @@ declare(strict_types=1);
 
 namespace Sylapi\EurocommerceLinkerV2\Enums;
 
-enum Source: int
+class Source
 {
-    case NONE = 0;
-    case UI = 1;
-    case FILE = 2;
-    case API = 3;
-    case BASELINKER = 4;
-    case SHOPIFY = 5;
-    case ALLEGRO = 6;
-    case PLENTYMARKETS = 7;
-    case WOOCOMMERCE = 8;
-    case OGIEN = 9;
-    case ROSESTA = 10;
-    case PRESTASHOP = 11;
-    case IDOSELL = 12;
+    const NONE = 0;
+    const UI = 1;
+    const FILE = 2;
+    const API = 3;
+    const BASELINKER = 4;
+    const SHOPIFY = 5;
+    const ALLEGRO = 6;
+    const PLENTYMARKETS = 7;
+    const WOOCOMMERCE = 8;
+    const OGIEN = 9;
+    const ROSESTA = 10;
+    const PRESTASHOP = 11;
+    const IDOSELL = 12;
 }

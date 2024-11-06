@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Sylapi\EurocommerceLinkerV2\Enums;
 
-enum ProductUnit: int
+class ProductUnit
 {
-    case PIECE = 0;
+    const PIECE = 0;
 }

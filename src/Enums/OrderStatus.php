@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace Sylapi\EurocommerceLinkerV2\Enums;
 
-enum OrderStatus: int
+class OrderStatus
 {
-    case DRAFT = 0;
-    case DRAFTNP = 1;
-    case WORKING = 2;
-    case TRANSFERRED = 3;
-    case COMPLETION = 4;
-    case PACKED = 5;
-    case RELEASED = 6;
-    case SENT = 7;
-    case DELIVERED = 8;
-    case CANCELED = 9;
-    case ERROR = 10;
-    case SETTLED = 11;
-    case RETURN_STATUS = 12;
-    case IMPORT_START_STATUS = 13;
+    const DRAFT = 0;
+    const DRAFTNP = 1;
+    const WORKING = 2;
+    const TRANSFERRED = 3;
+    const COMPLETION = 4;
+    const PACKED = 5;
+    const RELEASED = 6;
+    const SENT = 7;
+    const DELIVERED = 8;
+    const CANCELED = 9;
+    const ERROR = 10;
+    const SETTLED = 11;
+    const RETURN_STATUS = 12;
+    const IMPORT_START_STATUS = 13;
 }
