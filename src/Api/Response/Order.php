@@ -20,7 +20,9 @@ class Order
     {
         $order = new OrderEntity;
         $order->setId($this->result->orderId);
-        $order->setStatus($this->result->status);
+        if($status = $this->result->status ?? null) {
+            $order->setStatus($status);
+        }
         return $order;
     }
 }
