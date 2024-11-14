@@ -31,7 +31,7 @@ class Api
         return $this->carriers;
     }
 
-    public function CarrierServices(): Api\CarrierServices
+    public function carrierServices(): Api\CarrierServices
     {
         return $this->carrierServices;
     }

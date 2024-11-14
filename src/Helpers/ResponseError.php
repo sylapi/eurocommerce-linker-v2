@@ -16,22 +16,27 @@ class ResponseError
         $message = null;
 
         $response = $e->getResponse()->getBody()->getContents();
+
         $response = json_decode($response);
 
-        if (isset($response->details)) {
-            $message = json_encode($response->details);
-        } elseif (isset($response->message)) {
-            $message = $response->message;
-        } elseif (isset($response->error)) {
-            $message = $response->error;
+
+        if (isset($response->errors) && is_array($response->errors)) {
+            $message = implode('|', $response->errors);
+        } 
+
+        $code = self::messageByStatusCode($e->getResponse()->getStatusCode());
+
+        $responseMessage = null;
+
+        if($code) {
+            $responseMessage = $code.' ';
         }
 
-        if ($message === null) 
-        {
-            $message = self::messageByStatusCode($e->getResponse()->getStatusCode());
+        if($message) {
+            $responseMessage .= $message;
         }
 
-        return $message ?? self::DEFAULT_MESSAGE;
+        return $responseMessage ?? self::DEFAULT_MESSAGE;
     }
 
     public static function messageByStatusCode(int $code): ?string

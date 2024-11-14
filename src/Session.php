@@ -44,7 +44,7 @@ class Session
         $headers = [
             'accept' => 'application/json;charset=UTF-8',
             'Content-Type' => 'application/json;charset=UTF-8',
-            'companyId' => $this->parameters()->getCompanyId(),
+            'CompanyId' => $this->parameters()->getCompanyId(),
         ];
 
         if($this->token) {

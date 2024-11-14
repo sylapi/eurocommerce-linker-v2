@@ -24,6 +24,7 @@ class Order extends Entity
     private int $orderType = 0;
     private ?int $status = null;
     private ?array $properties = null;
+    private bool $isApiContractor = true;
 
     public function validate(): bool
     {
@@ -50,7 +51,8 @@ class Order extends Entity
             'orderItems' => $this->getOrderItems()->toArray(),
             'orderType' => $this->getOrderType(),
             'status' => $this->getStatus(),
-            'properties' => $this->getProperties()
+            'properties' => $this->getProperties(),
+            'isApiContractor' => $this->isApiContractor()
         ];
     }
 
@@ -196,6 +198,17 @@ class Order extends Entity
     public function setProperties(?array $properties): self
     {
         $this->properties = $properties;
+        return $this;
+    }
+
+    public function isApiContractor(): bool
+    {
+        return $this->isApiContractor;
+    }
+
+    public function setIsApiContractor(bool $isApiContractor): self
+    {
+        $this->isApiContractor = $isApiContractor;
         return $this;
     }
 
