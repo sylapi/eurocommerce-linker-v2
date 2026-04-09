@@ -1,4 +1,4 @@
-# EurocommerceLinker v2 
+# EurocommerceLinker v3
 
 ![PHPStan](https://img.shields.io/badge/PHPStan-level%205-brightgreen.svg?style=flat)
 
