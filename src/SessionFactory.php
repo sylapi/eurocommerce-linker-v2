@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace Sylapi\EurocommerceLinkerV2;
 
-use Sylapi\EurocommerceLinkerV2\Exceptions\ValidateException;
-
 class SessionFactory
 {
     private $sessions = [];
     private $parameters;
     
-    const API_LIVE = 'https://linker2.eurocommerce.pl/';
+    const API_LIVE = 'https://linker-eurocommerce.pl';
 
     public function session(Parameters $parameters): Session
     {

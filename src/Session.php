@@ -42,22 +42,19 @@ class Session
     public function headers()
     {
         $headers = [
-            'accept' => 'application/json;charset=UTF-8',
-            'Content-Type' => 'application/json;charset=UTF-8',
-            'CompanyId' => $this->parameters()->getCompanyId(),
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
         ];
 
         if($this->token) {
             $headers['Authorization'] = 'Bearer '.$this->token;
         }
 
-
         return $headers;
     }
 
     private function initializeSession(): void
     {
-
         if($this->getToken() === null) {
             $this->login();
         }
@@ -66,8 +63,6 @@ class Session
             'base_uri' => $this->parameters->getApiUrl(),
             'headers'  => $this->headers()
         ]);
-
-        $this->login();
     }
 
     private function login(): self
@@ -77,15 +72,17 @@ class Session
             'headers'  => $this->headers()
         ]);
         
-        $response = $client->post('/api/Authenticate/login', [
+        $response = $client->post('/api/auth/token', [
             'json' => [
-                'username' => $this->parameters()->getLogin(),
+                'email' => $this->parameters()->getLogin(),
                 'password' => $this->parameters()->getPassword(),
+                'token_name' => $this->parameters()->getTokenName() ?? 'integration-script',
             ]
         ]);
 
         $content = json_decode($response->getBody()->getContents());
-        $this->setToken($content?->result?->accessToken);
+
+        $this->setToken($content?->access_token);
         return $this;
     }
 

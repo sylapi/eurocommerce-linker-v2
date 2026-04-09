@@ -117,7 +117,6 @@ class Orders
         }
     }
 
-
     public function cancel(string $orderId): bool {
 
         try {

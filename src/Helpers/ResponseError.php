@@ -13,18 +13,21 @@ class ResponseError
 
     public static function message(ClientException $e): string
     {
-        $message = null;
+        $message = '';
 
         $response = $e->getResponse()->getBody()->getContents();
-
         $response = json_decode($response);
 
-
-        if (isset($response->errors) && is_array($response->errors)) {
-            $message = implode('|', $response->errors);
+        if(isset($response->errors) && is_object($response->errors)) {
+            $parts = [];
+            foreach($response->errors as $field => $messages) {
+                $parts[] = $field.': '.implode(' ', (array)$messages);
+            }
+            $message = implode(' | ', $parts);
         } 
+        
 
-        $code = self::messageByStatusCode($e->getResponse()->getStatusCode());
+        $code = $e->getResponse()->getStatusCode();
 
         $responseMessage = null;
 
@@ -38,44 +41,4 @@ class ResponseError
 
         return $responseMessage ?? self::DEFAULT_MESSAGE;
     }
-
-    public static function messageByStatusCode(int $code): ?string
-    {
-        $message = null;
-        switch ($code) {
-            case 400: 
-                $message = '400 (Bad Request)';
-                break;
-            case 401:
-                $message = '401 (Unauthorized)';
-                break;
-            case 403:
-                $message = '403 (Forbidden)';
-                break;
-            case 404:
-                $message = '404 (Not Found)';
-                break;
-            case 405:
-                $message = '405 (Method Not Allowed)';
-                break;
-            case 406:
-                $message = '406 (Not Acceptable)';
-                break; 
-            case 412:
-                $message = '412 (Precondition Failed)';
-                break;
-            case 415:
-                $message = '415 (Unsupported Media Type)';
-                break;
-            case 500:
-                $message = '500 (Internal Server Error)';
-                break;
-            case 501:
-                $message = '501 (Not Implemented)';
-                break;                                                                                           
-        }
-
-        return $message;
-    }
-
 }

@@ -33,14 +33,8 @@ class OrderItem extends Entity
     public function toArray(): array
     {
         return [
-            'id' => $this->getId(),
-            'orderId' => $this->getOrderId(),
-            'productId' => $this->getProductId(),
+            'sku' => $this->getProductId(),
             'quantity' => $this->getQuantity(),
-            'realQuantity' => $this->getRealQuantity(),
-            'unit' => $this->getUnit(),
-            'status' => $this->getStatus(),
-            'refId' => $this->getRefId(),
         ];
     }
 
