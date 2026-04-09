@@ -40,8 +40,6 @@ class Order extends Entity
     {
         return [
             'id' => $this->getId(),
-            'carrierId' => $this->getCarrierId(),
-            'companyId' => $this->getCompanyId(),
             'carrierIntegrationServiceId' => $this->getCarrierServiceId(),
             'orderNumber' => $this->getOrderNumber(),
             'addToAddressBook' => $this->getAddToAddressBook(),
