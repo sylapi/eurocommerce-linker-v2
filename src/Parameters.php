@@ -19,7 +19,7 @@ use Sylapi\EurocommerceLinkerV2\Traits\Validatable;
  * @method string setPassword(string $value)
  * @method string getDebug()
  * @method string setDebug(bool $value)
- * @method string getTokenName()
+ * @method ?string getTokenName()
  * @method string setTokenName(string $value)
  */
 class Parameters extends ArrayObject implements Validation 

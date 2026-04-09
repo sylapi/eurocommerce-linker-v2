@@ -9,7 +9,7 @@ class SessionFactory
     private $sessions = [];
     private $parameters;
     
-    const API_LIVE = 'https://linker-eurocommerce.pl';
+    const API_LIVE = 'https://cclinker:cclinker@dev.linker-eurocommerce.pl';
 
     public function session(Parameters $parameters): Session
     {
